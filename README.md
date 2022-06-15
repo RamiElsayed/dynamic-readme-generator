@@ -4,9 +4,18 @@ generating a dynamic readme page from the user input using node.js inquirer
 ## Description
 
 ## installation 
+```
 git clone https://github.com/RamiElsayed/dynamic-readme-generator.git
 cd dynamic-readme-generator
 npm install 
+
+```
+# usage
+```
+npm run start
+
+```
+# Screenshots or Video Links
 
 ## instructions
 
