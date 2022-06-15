@@ -2,8 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 // TODO: Create an array of questions for user input
-const readmeQuestions =  
-    [
+const readmeQuestions = () => {
+return inquirer.prompt([
       {
         type: 'input',
         name: 'title',
@@ -33,7 +33,17 @@ const readmeQuestions =
         type: 'checkbox',
         name: 'license',
         message: 'please select a license option:',
-        choices: ['MIT License','Apache License','GNU General Public License v3.0']
+        choices: [
+          {
+            value: 'MIT License'
+          },
+          {
+            value : 'Apache License'
+          },
+          {
+            value : 'GNU General Public License v3.0'
+          }
+        ]
       },
       {
         type: 'input',
@@ -55,7 +65,8 @@ const readmeQuestions =
         name: 'Questions',
         message: 'Please enter your email address',
       },
-    ];
+    ])
+  };
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
