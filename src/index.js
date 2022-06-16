@@ -1,81 +1,92 @@
 // TODO: Include packages needed for this application
+const generateMarkdown = require('./generateMarkdown.js');
 const inquirer = require('inquirer');
 const fs = require('fs');
 // TODO: Create an array of questions for user input
+const licenses = [
+  {
+    name: 'MIT License',
+    id: 'mit'
+  },
+  {
+    name: 'Apache License 2.0',
+    id : 'apache-2.0'
+  },
+  {
+    name : 'GNU General Public License v3.0',
+    id: 'gpl-3.0'
+  }
+]
+const questions = [
+  {
+    type: 'input',
+    name: 'title',
+    message: "please provide a project title",
+  },
+  {
+    type: 'input',
+    name: 'location',
+    message: 'Where are you from?',
+  },
+  {
+    type: 'input',
+    name: 'description',
+    message: 'Please describe your project?',
+  },
+  {
+    type: 'input',
+    name: 'installation',
+    message: 'please provide project installation instructions',
+  },
+  {
+    type: 'input',
+    name: 'usage',
+    message: 'Please provide a map for user',
+  },
+  {
+    type: 'list',
+    name: 'license',
+    message: 'please select a license option:',
+    choices: licenses
+  },
+  {
+    type: 'input',
+    name: 'contributing',
+    message: 'please provide contribution guidelines',
+  },
+  {
+    type: 'input',
+    name: 'tests',
+    message: 'please provide  test instructions',
+  },
+  {
+    type: 'input',
+    name: 'Questions',
+    message: 'Please enter your GitHub username',
+  },
+  {
+    type: 'input',
+    name: 'Questions',
+    message: 'Please enter your email address',
+  },
+]
 const readmeQuestions = () => {
-return inquirer.prompt([
-      {
-        type: 'input',
-        name: 'title',
-        message: "please provide a project title",
-      },
-      {
-        type: 'input',
-        name: 'location',
-        message: 'Where are you from?',
-      },
-      {
-        type: 'input',
-        name: 'description',
-        message: 'Please describe your project?',
-      },
-      {
-        type: 'input',
-        name: 'installation',
-        message: 'please provide project installation instructions',
-      },
-      {
-        type: 'input',
-        name: 'usage',
-        message: 'Please provide a map for user',
-      },
-      {
-        type: 'checkbox',
-        name: 'license',
-        message: 'please select a license option:',
-        choices: [
-          {
-            value: 'MIT License'
-          },
-          {
-            value : 'Apache License'
-          },
-          {
-            value : 'GNU General Public License v3.0'
-          }
-        ]
-      },
-      {
-        type: 'input',
-        name: 'contributing',
-        message: 'please provide contribution guidelines',
-      },
-      {
-        type: 'input',
-        name: 'tests',
-        message: 'please provide  test instructions',
-      },
-      {
-        type: 'input',
-        name: 'Questions',
-        message: 'Please enter your GitHub username',
-      },
-      {
-        type: 'input',
-        name: 'Questions',
-        message: 'Please enter your email address',
-      },
-    ])
+return inquirer.prompt(questions)
   };
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
+const writeToFile = async(fileName, data) => {
+  const markdown = await generateMarkdown(licenses, data);
+  fs.writeFile(fileName, markdown, err => {
+    if (err) {
+      console.error(err);
+    }
+  });
+}
 // TODO: Create a function to initialize app
 const init = async () => {
-  const projectAnswers = await inquirer.prompt(readmeQuestions);
-
-  console.log(projectAnswers);
+  const data = await readmeQuestions();
+  await writeToFile('output\README.md', data);
 }
 
 // Function call to initialize app
