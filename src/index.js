@@ -25,18 +25,13 @@ const questions = [
   },
   {
     type: 'input',
-    name: 'location',
-    message: 'Where are you from?',
-  },
-  {
-    type: 'input',
     name: 'description',
     message: 'Please describe your project?',
   },
   {
     type: 'input',
     name: 'installation',
-    message: 'please provide project installation instructions',
+    message: 'please provide project installation instructions (lines separated by \n)',
   },
   {
     type: 'input',
@@ -44,7 +39,7 @@ const questions = [
     message: 'Please provide a map for user',
   },
   {
-    type: 'list',
+    type: 'rawlist',
     name: 'license',
     message: 'please select a license option:',
     choices: licenses
@@ -57,16 +52,16 @@ const questions = [
   {
     type: 'input',
     name: 'tests',
-    message: 'please provide  test instructions',
+    message: 'please provide test instructions',
   },
   {
     type: 'input',
-    name: 'Questions',
+    name: 'github',
     message: 'Please enter your GitHub username',
   },
   {
     type: 'input',
-    name: 'Questions',
+    name: 'email',
     message: 'Please enter your email address',
   },
 ]
