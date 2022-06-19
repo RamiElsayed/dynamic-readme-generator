@@ -41,7 +41,7 @@ const generateMarkdown = async(licenses, data) => {
   markdown += '\n' + `> ${data.description}`;
   markdown += '\n' + '## Installation';
 
-  const installationLines = data.installation.split('\\n');
+  const installationLines = data.installation.split('\\\n');
   for (let line of installationLines) {
     markdown += '\n' + `${line}`;
   }
