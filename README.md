@@ -2,7 +2,7 @@
 generating a dynamic readme page from the user input using node.js inquirer
 
 ## Description
-I used markdown to mark up the readme, also provided user with instructions on how to input instructions.
+I used JavaScript, node.js markdown to mark up the readme, also provided user with instructions on how to input instructions.
 ## installation 
 ```
 git clone https://github.com/RamiElsayed/dynamic-readme-generator.git
@@ -17,6 +17,7 @@ npm run start
 ```
 # Screenshots or Video Links
 [Application Preview](https://drive.google.com/file/d/1Sj-_JfwW8n52AIsg9TihAf89zUiuRM7u/view)
+![screenshot](./assets/Dynamic-readme-generator.jpg)
 ## instructions
 
 > First install inquirer
