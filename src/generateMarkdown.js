@@ -29,7 +29,7 @@ const generateMarkdown = async(licenses, data) => {
   
   const license = licenses.find(x => x.name == data.license);
 
-  markdown += '\n' + renderLicenseBadge(license);
+  markdown += ' _ ' + renderLicenseBadge(license);
   markdown += '\n' + `## Table of Content`;
   markdown += '\n' + '- [Description](#description)';
   markdown += '\n' + '- [Installation](#installation)';
@@ -41,7 +41,7 @@ const generateMarkdown = async(licenses, data) => {
   markdown += '\n' + `> ${data.description}`;
   markdown += '\n' + '## Installation';
 
-  const installationLines = data.installation.split('\\\n');
+  const installationLines = data.installation.split('\\n');
   for (let line of installationLines) {
     markdown += '\n' + `${line}`;
   }

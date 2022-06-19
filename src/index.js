@@ -39,7 +39,7 @@ const questions = [
     message: 'Please provide a map for user',
   },
   {
-    type: 'rawlist',
+    type: 'list',
     name: 'license',
     message: 'please select a license option:',
     choices: licenses

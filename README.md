@@ -8,6 +8,7 @@ I used markdown to mark up the readme, also provided user with instructions on h
 git clone https://github.com/RamiElsayed/dynamic-readme-generator.git
 cd dynamic-readme-generator
 npm install 
+npm install inquirer
 
 ```
 # usage
@@ -15,7 +16,7 @@ npm install
 npm run start
 ```
 # Screenshots or Video Links
-
+[Application Preview](https://drive.google.com/file/d/1Sj-_JfwW8n52AIsg9TihAf89zUiuRM7u/view)
 ## instructions
 
 > First install inquirer
