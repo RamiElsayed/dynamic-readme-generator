@@ -18,6 +18,7 @@ const renderLicenseSection = async(license) => {
   let licenseSection = '## License';
   const response = await axios.get(renderLicenseLink(license));
   const description = response.data.description;
+  licenseSection += '\n' + `### ${license.name}`;
   licenseSection += '\n' + description;
   return licenseSection
 }
@@ -25,11 +26,11 @@ const renderLicenseSection = async(license) => {
 // TODO: Create a function to generate markdown for README
 const generateMarkdown = async(licenses, data) => {
   let markdown = `# ${data.title}`;
-
+  
   const license = licenses.find(x => x.name == data.license);
 
   markdown += '\n' + renderLicenseBadge(license);
-  markdown += '\n' + `| ## Table of Content |`;
+  markdown += '\n' + `## Table of Content`;
   markdown += '\n' + '- [Description](#description)';
   markdown += '\n' + '- [Installation](#installation)';
   markdown += '\n' + '- [Usage](#usage)';
@@ -39,7 +40,8 @@ const generateMarkdown = async(licenses, data) => {
   markdown += '\n' + '## Description';
   markdown += '\n' + `> ${data.description}`;
   markdown += '\n' + '## Installation';
-  const installationLines = data.installation.replace('\\n', '\n').split('\n');
+
+  const installationLines = data.installation.split('\\n');
   for (let line of installationLines) {
     markdown += '\n' + `${line}`;
   }
@@ -54,7 +56,7 @@ const generateMarkdown = async(licenses, data) => {
   markdown += '\n' + '> If you have any suggestions or questions please check my github: ';
   markdown += '\n' + `> [${data.github}](https://www.github.com/${data.github})`;
   markdown += '\n' + '> For any questions please email me on:  ';
-  markdown += '\n' + `> <${data.email}>`;
+  markdown += '\n' + `<${data.email}>`;
   return markdown;
 }
 

@@ -31,7 +31,7 @@ const questions = [
   {
     type: 'input',
     name: 'installation',
-    message: 'please provide project installation instructions (lines separated by \n)',
+    message: 'please provide project installation instructions (lines separated by "\\\\n")',
   },
   {
     type: 'input',
